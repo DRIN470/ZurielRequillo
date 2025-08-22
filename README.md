@@ -1,2 +1,0 @@
-# ZurielRequillo
-Bitwise operations

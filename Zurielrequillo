@@ -1,0 +1,75 @@
+# ZurielRequillo
+Bitwise operations
+def display_result(operation, result):
+    print(f"\nResult of {operation}:")
+    print(f"Decimal: {result}")
+    print(f"Binary : {to_binary(result)}\n")
+
+
+def to_binary(n, bits=8):
+    """Convert integer to binary string with fixed bits and two's complement for negatives."""
+    if n >= 0:
+        return format(n, f'0{bits}b')
+    else:
+        return format((1 << bits) + n, f'0{bits}b')
+
+
+def main():
+    print("=== Bitwise Operations Demonstrator ===")
+    while True:
+        print("\nChoose an operation:")
+        print("1. AND (&)")
+        print("2. OR (|)")
+        print("3. XOR (^)")
+        print("4. NOT (~)")
+        print("5. Left Shift (<<)")
+        print("6. Right Shift (>>)")
+        print("7. Exit")
+
+        choice = input("Enter your choice (1-7): ")
+
+        if choice == '7':
+            print("Exiting the program. Goodbye!")
+            break
+
+        if choice in ['1', '2', '3', '5', '6']:
+            try:
+                a = int(input("Enter the first integer: "))
+                b = int(input("Enter the second integer: "))
+            except ValueError:
+                print("Invalid input. Please enter integers only.")
+                continue
+
+        elif choice == '4':
+            try:
+                a = int(input("Enter the integer: "))
+            except ValueError:
+                print("Invalid input. Please enter an integer.")
+                continue
+        else:
+            print("Invalid choice. Please try again.")
+            continue
+
+        if choice == '1':
+            result = a & b
+            display_result(f"{a} & {b}", result)
+        elif choice == '2':
+            result = a | b
+            display_result(f"{a} | {b}", result)
+        elif choice == '3':
+            result = a ^ b
+            display_result(f"{a} ^ {b}", result)
+        elif choice == '4':
+            result = ~a
+            display_result(f"~{a}", result)
+        elif choice == '5':
+            result = a << b
+            display_result(f"{a} << {b}", result)
+        elif choice == '6':
+            result = a >> b
+            display_result(f"{a} >> {b}", result)
+
+
+if __name__ == "__main__":
+    main()
+
